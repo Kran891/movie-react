@@ -38,7 +38,7 @@ function HeaderComponent() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             
             <NavDropdownComponent title={language} changeTitle={changeLanguage} data={languages}/>
             <NavDropdownComponent title={type} changeTitle={changeType} data={types}/>
