@@ -11,6 +11,9 @@ body{
     background-color: #1E1E1E;
     border: none;
 }
+.changeInputFocus input{
+    color: ghostwhite;
+}
 .changeInputFocus input[type]:focus{
     background-color: #1E1E1E;
     outline: 1px solid blue;
