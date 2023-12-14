@@ -1,0 +1,19 @@
+body{
+    background-color: black;
+}
+.card{
+    background-color: #1E1E1E;
+}
+.card-body{
+    color: ghostwhite;
+}
+.form-control{
+    background-color: #1E1E1E;
+    border: none;
+}
+.changeInputFocus input[type]:focus{
+    background-color: #1E1E1E;
+    outline: 1px solid blue;
+    box-shadow: none;
+    color: ghostwhite;
+}
