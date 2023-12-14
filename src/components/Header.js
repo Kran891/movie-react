@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
 import HeaderImage from '../img/logo.svg'
-function Header() {
+function HeaderComponent() {
     const [languages,setLanguages]= useState([]);
-    setLanguages(["Tamil","Telugu"])
-    console.log(languages);
+    useEffect(() => {
+       const x= ()=>{
+        setLanguages(["Tamil","Telugu"])
+        console.log(languages);
+        }
+        x()
+    }, []);
+    
+    
     return <header className="header">
         <div className="header__wrap">
             <div className="container">
@@ -18,7 +25,7 @@ function Header() {
                           
                             <ul className="header__nav">
                                 
-                                <NavLink link="/languages" name="Languages" data={languages} />
+                                <NavLink link="/languages" name="Languages"  />
                             </ul>
                             
                             {/* <div className="header__auth">
@@ -61,4 +68,4 @@ function Header() {
        
     </header>
 }
-export default Header;
+export default HeaderComponent;

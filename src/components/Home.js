@@ -1,6 +1,6 @@
-import Header from "./Header";
+import HeaderComponent from "./Header";
 
 function Home() {
-    return <Header></Header>
+    return <HeaderComponent></HeaderComponent>
 }
 export default Home;
