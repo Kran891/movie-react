@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
+import coverImages from '../img/covers/cover.jpg'
 
 export default function MoviesComponent() {
   return (
@@ -7,7 +8,7 @@ export default function MoviesComponent() {
       {/* First Row */}
       <Col md={3} className="mb-4">
         <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+          <Card.Img variant="top" className='imgSize' src={coverImages} />
           <Card.Body>
             <Card.Title>Card Title 1</Card.Title>
             <Card.Text>
