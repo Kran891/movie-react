@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 
-export default function LogIn() {
+export default function LogInComponent() {
   return (
     <div>
       <Container>
