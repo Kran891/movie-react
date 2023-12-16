@@ -27,3 +27,7 @@ body{
     height: 350px;
     
 }
+.searchbarStyling{
+    background-color: #f8f9fa!important;
+    border: 1px solid green!important;
+}

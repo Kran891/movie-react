@@ -46,10 +46,10 @@ function HeaderComponent() {
             <NavDropdownComponent title={type} changeTitle={changeType} data={types}/>
           </Nav>
           <Form className="d-flex">
-            <Form.Control
+            <Form.Control 
               type="search"
               placeholder="Search"
-              className="me-2"
+              className="me-2 searchbarStyling"
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>

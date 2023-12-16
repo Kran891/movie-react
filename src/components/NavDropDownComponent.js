@@ -1,10 +1,18 @@
-import { NavDropdown } from "react-bootstrap"
+import { NavDropdown, SplitButton } from "react-bootstrap"
 
-function NavDropdownComponent(props){
-  return <NavDropdown title={props.title} id="navbarScrollingDropdown">
-  {props.data && props.data.map(ele=>
-  <NavDropdown.Item onClick={()=>{props.changeTitle(ele.name.toUpperCase())}}>{ele.name.toUpperCase()}</NavDropdown.Item>
-  )}
-</NavDropdown>
+function NavDropdownComponent(props) {
+  return <SplitButton style={{"margin-left":"10px"}}
+  id={`dropdown-button-drop-start`}
+  drop='start'
+  variant="secondary"
+  title = {props.title}
+>
+    {props.data && props.data.map(ele =>
+      
+
+        <NavDropdown.Item  onClick={() => { props.changeTitle(ele.name.toUpperCase()) }}>{ele.name.toUpperCase()}</NavDropdown.Item>
+      
+    )}
+  </SplitButton>
 }
 export default NavDropdownComponent;

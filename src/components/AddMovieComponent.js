@@ -1,9 +1,9 @@
 import React from 'react';
 import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import Select from 'react-select'; // Import react-select
-import { Link } from 'react-router-dom';
 
-export default function AddMovie() {
+
+export default function AddMovieComponent() {
     // Define options for the multi-select dropdown
     const options = [
         { value: 'option1', label: 'Option 1' },
