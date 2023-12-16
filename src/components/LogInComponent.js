@@ -1,8 +1,26 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React ,{useState}from 'react';
+import {Link,useNavigate} from 'react-router-dom';
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import User from '../services/User';
 
 export default function LogInComponent() {
+  const navigate=useNavigate();
+  const [user,setUser]=useState({
+    email:"",
+    password:"",
+  })
+  function handleChange(event){
+     const {name,value}=event.target
+     setUser(pValues=>{return{
+        ...pValues,
+        [name]:value
+     }})
+
+  }
+  function handleSubmit(event){
+    event.preventDefault();
+    User.addUser(user);
+  }
   return (
     <div>
       <Container>
@@ -14,12 +32,12 @@ export default function LogInComponent() {
                 <div className="mb-3 mt-md-4">
                   <h2 className="fw-bold mb-3 text-center text-uppercase ">Sign In</h2>
                   <div className="mb-3">
-                    <Form className="changeInputFocus">
+                    <Form className="changeInputFocus" onSubmit={handleSubmit}>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" name="email" value={user.email} onChange={handleChange} placeholder="Enter email" />
                       </Form.Group>
 
                       <Form.Group
@@ -27,7 +45,7 @@ export default function LogInComponent() {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" name="password" value={user.password} onChange={handleChange} placeholder="Password" />
                       </Form.Group>
                       <div className="d-grid">
                         <Button variant="primary" type="submit">

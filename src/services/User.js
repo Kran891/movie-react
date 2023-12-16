@@ -8,4 +8,10 @@ User.addUser=async(data)=>{
         console.log(res.data);
     })
 }
+User.loginUser = async (data) => {
+    axios.post(`${API}users/login`,data)
+    .then(res => {
+        console.log(res.data);
+    })
+}
 export default User;
