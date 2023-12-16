@@ -1,8 +1,28 @@
-import React  from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState }  from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import User from '../services/User';
 
 export default function SignUpComponent() {
+  const navigate=useNavigate();
+  const [user,setUser]=useState({
+    name:"",
+    email:"",
+    password:"",
+    confirmPassword:""
+  })
+  function handleChange(event){
+     const {name,value}=event.target
+     setUser(pValues=>{return{
+        ...pValues,
+        [name]:value
+     }})
+
+  }
+  function handleSubmit(event){
+    event.preventDefault();
+    User.addUser(user);
+  }
   return (
     <div>
       <Container>
@@ -14,19 +34,19 @@ export default function SignUpComponent() {
                 <div className="mb-3 mt-md-4">
                   <h2 className="fw-bold mb-3 text-center text-uppercase ">Welcome</h2>
                   <div className="mb-3">
-                    <Form className="changeInputFocus">
+                    <Form className="changeInputFocus" onSubmit={handleSubmit}>
                       <Form.Group className="mb-3" controlId="Name">
                         <Form.Label className="text-center">
                           Name
                         </Form.Label>
-                        <Form.Control type="text" placeholder="Enter Name" />
+                        <Form.Control name="name" vlaue={user.name}type="text" onChange={handleChange} className='changeInputFocus' placeholder="Enter Name" />
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">
                           Email address
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control name="email" value={user.email} onChange={handleChange} type="email" placeholder="Enter email" />
                       </Form.Group>
 
                       <Form.Group
@@ -34,14 +54,14 @@ export default function SignUpComponent() {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" onChange={handleChange} name="password" value={user.password} placeholder="Password" />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
-                        controlId="formBasicPassword"
+                        controlId="formBasicPassword1"
                       >
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" name='confirmPassword' value={user.confirmPassword} onChange={handleChange} placeholder="Password" />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
@@ -49,7 +69,7 @@ export default function SignUpComponent() {
                       >
                       </Form.Group>
                       <div className="d-grid">
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary" type="submit" >
                           Create Account
                         </Button>
                       </div>

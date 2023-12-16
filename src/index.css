@@ -9,7 +9,7 @@ body{
 }
 .form-control{
     background-color: #1E1E1E;
-    border: none;
+    border: 0.5px solid rgb(116, 128, 209);
 }
 .changeInputFocus input{
     color: ghostwhite;
