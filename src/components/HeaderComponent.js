@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
 import Language from '../services/Language';
 import Movie from '../services/Movie';
 import NavDropdownComponent from './NavDropDownComponent';
@@ -13,10 +13,12 @@ function HeaderComponent() {
     const [language,setLanguage]=useState("Language")
     const [languages,setLanguages]=useState(null);
     const [type, setType] = useState("Type");
+    const profileSettings=[{name:"Profile"},{name:"Change Password"}]
     const [types, setTypes] = useState(null);
     useEffect(() => {
         
         return async () => {
+         
          await   Language.getAllLanguages(setLanguages)
          await   Movie.getAllTypes(setTypes)
         };
@@ -52,6 +54,7 @@ function HeaderComponent() {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
+          <NavDropdownComponent title=<i class="fa-solid fa-user"></i> changeTitle={changeLanguage} data={profileSettings}/>
         </Navbar.Collapse>
       </Container>
     </Navbar>
