@@ -19,7 +19,7 @@ export default function LogInComponent() {
   }
   function handleSubmit(event){
     event.preventDefault();
-    User.addUser(user);
+    User.loginUser(user);
   }
   return (
     <div>
