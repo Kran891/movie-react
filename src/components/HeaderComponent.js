@@ -8,12 +8,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import Language from '../services/Language';
 import Movie from '../services/Movie';
 import NavDropdownComponent from './NavDropDownComponent';
+import ProfileDropDownComponent from './ProfileDropDownComponent';
 
 function HeaderComponent() {
     const [language,setLanguage]=useState("Language")
     const [languages,setLanguages]=useState(null);
     const [type, setType] = useState("Type");
-    const profileSettings=[{name:"Profile"},{name:"Change Password"}]
+  
     const [types, setTypes] = useState(null);
     useEffect(() => {
         
@@ -54,7 +55,7 @@ function HeaderComponent() {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-          <NavDropdownComponent title=<i class="fa-solid fa-user"></i> changeTitle={changeLanguage} data={profileSettings}/>
+          <ProfileDropDownComponent />
         </Navbar.Collapse>
       </Container>
     </Navbar>
