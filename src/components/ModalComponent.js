@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Modal, Button ,Form} from 'react-bootstrap';
+import React, { useState,props } from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
+import Genre from '../services/Genre';
 
-const ModalComponent = () => {
+const ModalComponent = (props) => {
     const [show, setShow] = useState(false);
     const [genre, setGenre] = useState({
         name: ""
@@ -18,9 +19,11 @@ const ModalComponent = () => {
         })
 
     }
-    function handleSubmit(event) {
+    function handleGenreSubmit(event) {
         event.preventDefault();
-        // User.updateUser(user);
+        
+        props.onGenreFormSubmit(genre);
+        handleClose();
     }
 
     return (
@@ -33,7 +36,7 @@ const ModalComponent = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Genre</Modal.Title>
                 </Modal.Header>
-                <Form className="row mt-2" onSubmit={handleSubmit}>
+                
                     <Modal.Body>
                         <Form.Group className="col-md-12">
                             <Form.Label className="labels">Name</Form.Label>
@@ -44,11 +47,11 @@ const ModalComponent = () => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" type='submit'>
+                        <Button variant="primary" type='button' onClick={handleGenreSubmit} >
                             Save Changes
                         </Button>
                     </Modal.Footer>
-                </Form>
+             
             </Modal>
         </>
     );

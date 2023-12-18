@@ -4,6 +4,7 @@ import Select from 'react-select'; // Import react-select
 import Genreral from '../services/General';
 import Movie from '../services/Movie';
 import ModalComponent from './ModalComponent';
+import Genre from '../services/Genre';
 
 export default function AddMovieComponent() {
     const [genres, setGenres] = useState([]);
@@ -71,6 +72,11 @@ export default function AddMovieComponent() {
       event.preventDefault()
       movie.ott=ott
       await Movie.addNewMovie(movie);
+    }
+    async function handleGenreFormSubmit(genreData) {
+      console.log(genreData);
+      await Genre.addGenre(genreData);
+      await getGenres();
     }
   return (
     <div>
@@ -152,10 +158,23 @@ export default function AddMovieComponent() {
                             <Form.Label>Genres</Form.Label>
                             <Row>
                               <Col>
-                                <Select isMulti options={genres} name='genres' onChange={(v)=>{handleDropDown("genres",v)}}   />
+                                <Select isMulti options={genres} name='genres' onChange={(v)=>{handleDropDown("genres",v)}} 
+                                styles={{
+                                  control: (provided, state) => ({
+                                    ...provided,
+                                    backgroundColor: '#1E1E1E',
+                                    color: 'ghostwhite',
+                                    border: '0.5px solid rgb(116, 128, 209)',
+                                  }),
+                                  option: (provided, state) => ({
+                                    ...provided,
+                                    backgroundColor: '#1E1E1E',
+                                    border: '0.5px solid rgb(116, 128, 209)',
+                                  }),
+                                }}  />
                               </Col>
                               <Col>
-                                <ModalComponent/>
+                              <ModalComponent onGenreFormSubmit={handleGenreFormSubmit} />
                               </Col>
                             </Row>
                           </Form.Group>
@@ -165,7 +184,20 @@ export default function AddMovieComponent() {
                             <Form.Label>Languages</Form.Label>
                             <Row>
                               <Col>
-                                <Select isMulti options={languages} name='languages'  onChange={(v)=>{handleDropDown("languages",v)}}  />
+                                <Select isMulti options={languages} name='languages'  onChange={(v)=>{handleDropDown("languages",v)}} 
+                                styles={{
+                                  control: (provided, state) => ({
+                                    ...provided,
+                                    backgroundColor: '#1E1E1E',
+                                    color: 'ghostwhite',
+                                    border:'0.5px solid rgb(116, 128, 209)',
+                                  }),
+                                  option: (provided, state) => ({
+                                    ...provided,
+                                    backgroundColor: '#1E1E1E',
+                                    border: '0.5px solid rgb(116, 128, 209)',
+                                  }),
+                                }}  />
                               </Col>
                               <Col>
                                 <Button>
