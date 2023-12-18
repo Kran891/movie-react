@@ -69,3 +69,9 @@ body{
 .profileEmail{
     color: ghostwhite!important;
 }
+.dropdownStyling{
+    background-color: #1E1E1E!important;
+    color: ghostwhite;
+    width: 100%;
+    border: none;
+}
