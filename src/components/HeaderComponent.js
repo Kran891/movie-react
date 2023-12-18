@@ -10,8 +10,8 @@ import Movie from '../services/Movie';
 import NavDropdownComponent from './NavDropDownComponent';
 import ProfileDropDownComponent from './ProfileDropDownComponent';
 
-function HeaderComponent() {
-    const [language,setLanguage]=useState("Language")
+function HeaderComponent(props) {
+    
     const [languages,setLanguages]=useState(null);
     const [type, setType] = useState("Type");
   
@@ -24,12 +24,7 @@ function HeaderComponent() {
          await   Movie.getAllTypes(setTypes)
         };
     }, []);
-    function changeLanguage(lan){
-        setLanguage(lan)
-    }
-    function changeType(type){
-        setType(type)
-    }
+    
   return (
     <Navbar expand="lg" className="bg-body-tertiary pl-5">
       <Container fluid>
@@ -43,8 +38,8 @@ function HeaderComponent() {
           >
             <Nav.Link href="/">Home</Nav.Link>
             
-            <NavDropdownComponent title={language} changeTitle={changeLanguage} data={languages}/>
-            <NavDropdownComponent title={type} changeTitle={changeType} data={types}/>
+            <NavDropdownComponent title={props.language} handleChange={props.handleChange} changeTitle={props.changeLanguage} data={languages}/>
+            <NavDropdownComponent title={props.type} handleChange={props.handleChange} changeTitle={props.changeType} data={types}/>
           </Nav>
           <Form className="d-flex">
             <Form.Control 

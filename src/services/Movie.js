@@ -11,13 +11,11 @@ Movie.getAllTypes=async (setTypes)=>{
 
     }
 }
-Movie.getAllMovies=async (setMovies)=>{
+Movie.getAllMovies=async ()=>{
   try{
-    axios.get(`${API}movies`).then(
-      res=>{setMovies(res.data)}
-    )
+   const res=await axios.get(`${API}movies`)
+   return res.data;
    
-    
   }catch(err){
 
   }
