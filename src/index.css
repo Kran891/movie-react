@@ -31,3 +31,20 @@ body{
     background-color: #f8f9fa!important;
     border: 1px solid green!important;
 }
+.profileStyling{
+    background-color: #1E1E1E!important;
+    color: ghostwhite;
+    width: 60%;
+}
+.profileStyling input{
+    color: ghostwhite;
+}
+.profileStyling input[type]:focus{
+    background-color: #1E1E1E;
+    outline: 1px solid blue;
+    box-shadow: none;
+    color: ghostwhite;
+}
+.profileEmail{
+    color: ghostwhite!important;
+}
