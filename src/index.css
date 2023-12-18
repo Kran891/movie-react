@@ -21,7 +21,7 @@ body{
     color: ghostwhite;
 }
 .marginLeft {
-    margin-left: 30px;
+    margin-left: none;
 }
 .imgSize{
     height: 350px;

@@ -1,7 +1,7 @@
 import axios from "axios"
 import API from "./API";
 
-const Movie={}
+var Movie={}
 Movie.getAllTypes=async (setTypes)=>{
     try{
       axios.get(`${API}types`)
@@ -10,6 +10,17 @@ Movie.getAllTypes=async (setTypes)=>{
     }catch(err){
 
     }
+}
+Movie.getAllMovies=async (setMovies)=>{
+  try{
+    axios.get(`${API}movies`).then(
+      res=>{setMovies(res.data)}
+    )
+   
+    
+  }catch(err){
+
+  }
 }
 Movie.addNewMovie=async(movie)=>{
   
