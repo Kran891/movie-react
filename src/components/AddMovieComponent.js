@@ -3,6 +3,7 @@ import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import Select from 'react-select'; // Import react-select
 import Genreral from '../services/General';
 import Movie from '../services/Movie';
+import ModalComponent from './ModalComponent';
 
 export default function AddMovieComponent() {
     const [genres, setGenres] = useState([]);
@@ -154,9 +155,7 @@ export default function AddMovieComponent() {
                                 <Select isMulti options={genres} name='genres' onChange={(v)=>{handleDropDown("genres",v)}}   />
                               </Col>
                               <Col>
-                                <Button>
-                                  <i className="fa-solid fa-plus fa-beat fa-2xs"></i>
-                                </Button>
+                                <ModalComponent/>
                               </Col>
                             </Row>
                           </Form.Group>

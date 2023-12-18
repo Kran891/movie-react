@@ -45,6 +45,27 @@ body{
     box-shadow: none;
     color: ghostwhite;
 }
+.modal-content{
+    background-color: #1E1E1E!important;
+    color: ghostwhite;
+    width: 100%;
+    border: none;
+}
+.modal-content input{
+    color: ghostwhite;
+}
+.modal-content input[type]:focus{
+    background-color: #1E1E1E;
+    outline: 1px solid blue;
+    box-shadow: none;
+    color: ghostwhite;
+}
+.modal-footer{
+    border: none;
+}
+.modal-header{
+    border: none;
+}
 .profileEmail{
     color: ghostwhite!important;
 }
