@@ -10,7 +10,7 @@ function NavDropdownComponent(props) {
     {props.data && props.data.map(ele =>
       
 
-        <NavDropdown.Item  onClick={() => { props.changeTitle(ele.name.toUpperCase()) }}>{ele.name.toUpperCase()}</NavDropdown.Item>
+        <NavDropdown.Item  onClick={() => { props.changeTitle(ele.toUpperCase()) }}>{ele.toUpperCase()}</NavDropdown.Item>
       
     )}
   </SplitButton>

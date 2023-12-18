@@ -11,4 +11,9 @@ Movie.getAllTypes=async (setTypes)=>{
 
     }
 }
+Movie.addNewMovie=async(movie)=>{
+  
+  axios.post(`${API}movies`,movie)
+  .then(res=>{console.log(res.data)})
+}
 export default Movie;

@@ -2,22 +2,12 @@ import axios from "axios"
 import API from "./API"
 
 var Genreral={}
-Genreral.getAllLanguages=async (setLanguages)=>{
-    axios.get(`${API}languages`)
-    .then(res=>
-        setLanguages(res.data.map(x=>{return{label:x,value:x}})))
-    .catch
-    (err=>{
-
-    })
+Genreral.getAllLanguages=async ()=>{
+  const res=await  axios.get(`${API}languages`)
+return res.data;
 }
-Genreral.getAllGenres=async (setGenres)=>{
-    axios.get(`${API}languages`)
-    .then(res=>
-        setGenres(res.data.map(x=>{return{label:x,value:x}})))
-    .catch
-    (err=>{
-        
-    })
+Genreral.getAllGenres=async ()=>{
+   const res=await axios.get(`${API}genres`)
+return res.data
 }
 export default Genreral;
