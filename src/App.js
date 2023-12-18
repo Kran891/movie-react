@@ -19,7 +19,7 @@ function App() {
       <Route path='/moviedetail' Component={MovieDetailComponent} />
       <Route path='/addmovie' Component={AddMovieComponent} />
       <Route path='/changepassword' Component={ChangePasswordComponent} />
-      <Route path='/userprofile' Component={UserProfileComponent} />
+      <Route path='/profile' Component={UserProfileComponent} />
     </Routes>
   </BrowserRouter>
   //  return <Header/>
