@@ -64,11 +64,15 @@ export default function MovieDetailComponent() {
                                         <div class="card-body"><div class="card-title h5">Animal</div><p class="card-text">
                                             <p class="movieCardTextStyling"><i class="fa-solid fa-clock"></i> : Fri Dec 01 2023</p>
                                             <p class="movieCardTextStyling"><i class="fa-solid fa-globe"></i> : Action</p>
-                                        </p><div class="card-footer"><div class="row"><div class="col-md-3">
-                                            <a class="btn btn-link" href="/moviedetail/5/658040043c6006b5ba39144a">Details</a>
+                                        </p><div class="card-footer"><div class="row">
+                                        <div class="col-md-3">
+                                            <a class="btn btn-secondary" href="/moviedetail/5/658040043c6006b5ba39144a">Details</a>
                                         </div>
-                                            <div class="col-md-9">
-                                                <a class="btn btn-link" href="/home/netflix.com" target="_blank">Netflix</a>
+                                        <div class="col-md-2">
+                                            
+                                        </div>
+                                            <div class="col-md-7">
+                                                <a class="btn btn-success" href="/home/netflix.com" target="_blank">Netflix</a>
                                             </div>
                                         </div>
                                             </div>

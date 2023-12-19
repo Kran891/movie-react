@@ -78,6 +78,7 @@ export default function AddMovieComponent() {
       event.preventDefault()
       movie.ott=ott
       await Movie.addNewMovie(movie);
+      navigate('/')
     }
     async function handleGenreFormSubmit(genreData) {
       console.log(genreData);
