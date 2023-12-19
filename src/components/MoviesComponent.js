@@ -33,7 +33,7 @@ else{
 console.log(movies);
 }
   return (
-    <Row className="justify-content-center mt-4 marginLeft">
+    <Row className=" mt-4 marginLeft">
     {movies && movies.map(movie=>
      <MovieCardComponent movie={movie} />
     )}
