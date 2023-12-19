@@ -20,6 +20,16 @@ Movie.getAllMovies=async ()=>{
 
   }
 }
+Movie.getMovieById=async (id)=>{
+  try{
+   const res=await axios.get(`${API}movies/${id}`)
+   return res.data;
+   
+  }catch(err){
+
+  }
+}
+
 Movie.addNewMovie=async(movie)=>{
   
   axios.post(`${API}movies`,movie)

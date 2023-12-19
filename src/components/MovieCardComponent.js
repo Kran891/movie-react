@@ -7,13 +7,13 @@ function MovieCardComponent(props){
  return <>
     <Col md={3} className="mb-4">
         <Card style={{ width: '18rem' }}>
-        {id=getRandomIndex()}
+        <p style={{display:"none"}}>{id=getRandomIndex()}</p>
           <Card.Img variant="top" className='imgSize' src={images[getRandomIndex()]} />
           <Card.Body>
             <Card.Title>{props.movie.name}</Card.Title>
             <Card.Text>
-            <p><bold><i class="fa-solid fa-clock"></i></bold> : {new Date(props.movie.releaseDate).toDateString()}</p>
-              <p><i class="fa-solid fa-globe"></i> : {props.movie.genres.slice(0,2).join(",")}</p>
+            <p className="movieCardTextStyling"><i class="fa-solid fa-clock"></i> : {new Date(props.movie.releaseDate).toDateString()}</p>
+            <p className="movieCardTextStyling"><i class="fa-solid fa-globe"></i> : {props.movie.genres.slice(0,2).join(",")}</p>
             </Card.Text>
             <Card.Footer>
                 <Row>
