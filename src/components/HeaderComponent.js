@@ -11,10 +11,11 @@ import Movie from '../services/Movie';
 import NavDropdownComponent from './NavDropDownComponent';
 import ProfileDropDownComponent from './ProfileDropDownComponent';
 
-function HeaderComponent(props) {
+function HeaderComponent() {
 
   const [languages, setLanguages] = useState(null);
-  const [type, setType] = useState("Type");
+    const [language,setLanguage]=useState("Language")
+  const [type, setType] = useState("Type")
 
   const [types, setTypes] = useState(null);
   const id = localStorage.getItem('id');
@@ -41,9 +42,9 @@ function HeaderComponent(props) {
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
-
-            <NavDropdownComponent title={props.language} handleChange={props.handleChange} changeTitle={props.changeLanguage} data={languages} />
-            <NavDropdownComponent title={props.type} handleChange={props.handleChange} changeTitle={props.changeType} data={types} />
+            
+            <NavDropdownComponent title={language}  changeTitle={setLanguage} data={languages}/>
+            <NavDropdownComponent title={type}  changeTitle={setType} data={types}/>
           </Nav>
           <Form className="d-flex">
             <Form.Control
