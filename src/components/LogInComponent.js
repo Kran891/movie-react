@@ -9,7 +9,11 @@ export default function LogInComponent() {
     email:"",
     password:"",
   })
+  const [err,setError] = useState(null);
   function handleChange(event){
+    if(err){
+      setError(null);
+    }
      const {name,value}=event.target
      setUser(pValues=>{return{
         ...pValues,
@@ -19,8 +23,7 @@ export default function LogInComponent() {
   }
   async function handleSubmit(event){
     event.preventDefault();
-    await User.loginUser(user,navigate);
-    
+      await User.loginUser(user,navigate,setError);
   }
   return (
     <div>
@@ -48,6 +51,7 @@ export default function LogInComponent() {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name="password" value={user.password} onChange={handleChange} placeholder="Password" />
                       </Form.Group>
+                      <p className="text-danger mt-2">{err}</p>
                       <div className="d-grid">
                         <Button variant="primary" type="submit">
                           Sign In

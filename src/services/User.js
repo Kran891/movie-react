@@ -1,7 +1,7 @@
 import axios from "axios"
 import API from "./API";
 
-var User={}
+var User={};
 User.addUser=async(data,navigate)=>{
     axios.post(`${API}users`,data)
     .then(res=>{
@@ -16,7 +16,7 @@ User.addUser=async(data,navigate)=>{
         console.log(res.data);
     })
 }
-User.loginUser = async (data,navigate) => {
+User.loginUser = async (data,navigate,setError) => {
    try {
     axios.post(`${API}users/login`,data)
     .then(res => {
@@ -30,11 +30,10 @@ User.loginUser = async (data,navigate) => {
             navigate("/signin")
         }
         console.log(res);
-    }).catch(err=>{
-
+    }).catch(error =>{
+        setError(error.response.data)
     })
    } catch (error) {
-     
    } 
 }
 User.changePassword = async (data,navigate) => {
