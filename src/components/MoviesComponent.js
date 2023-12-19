@@ -23,7 +23,7 @@ export default function MoviesComponent({movies}) {
 // console.log(movies);
 // }
   return (
-    <Row className=" mt-4 marginLeft">
+    <Row className=" mt-4 marginLeft" style={{'max-width':'100%'}}>
     {movies && movies.map(movie=>
      <MovieCardComponent movie={movie} />
     )}
