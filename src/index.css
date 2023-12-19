@@ -79,3 +79,6 @@ body{
     font-size: 15px;
     opacity: 0.5;
 }
+.carousel-indicators {
+    display: none!important;
+}
