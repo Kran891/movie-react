@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import Select from 'react-select'; // Import react-select
+import { useNavigate } from 'react-router-dom';
 import Genreral from '../services/General';
 import Movie from '../services/Movie';
 import ModalComponent from './ModalComponent';
 import Genre from '../services/Genre';
 
 export default function AddMovieComponent() {
+  const role = localStorage.getItem('role');
+  const navigate = useNavigate();
+  // {
+  //   if( role !== 'admin') {navigate('/home') }
+  // }
     const [genres, setGenres] = useState([]);
     const [languages, setLanguages] = useState([]);
     const [ott, setOtt] = useState({

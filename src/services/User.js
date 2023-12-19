@@ -5,7 +5,7 @@ var User={}
 User.addUser=async(data,navigate)=>{
     axios.post(`${API}users`,data)
     .then(res=>{
-        if(res.status != 401){
+        if(res.status !== 401){
             localStorage.setItem("token",res.data.token);
             localStorage.setItem("id",res.data.id);
             navigate("/")
@@ -20,9 +20,10 @@ User.loginUser = async (data,navigate) => {
    try {
     axios.post(`${API}users/login`,data)
     .then(res => {
-        if(res.status != 401){
+        if(res.status !== 401){
             localStorage.setItem("token",res.data.token);
             localStorage.setItem("id",res.data.id);
+            localStorage.setItem("role",res.data.roles[0]);
             navigate("/")
         }
         else{
@@ -36,11 +37,14 @@ User.loginUser = async (data,navigate) => {
      
    } 
 }
-User.changePassword = async (data) => {
+User.changePassword = async (data,navigate) => {
     data.userId = localStorage.getItem('id');
     axios.post(`${API}users/changepassword`,data)
     .then( res => {
-        console.log(res.data);
+        if(res.status !== 401){
+            localStorage.clear();
+            navigate('/signin');
+        }
     })
 }
 User.getUser = async (setUser) => {

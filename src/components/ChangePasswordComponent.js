@@ -1,5 +1,5 @@
 import React ,{useState}from 'react';
-import {Link,useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import User from '../services/User';
 
@@ -17,9 +17,9 @@ export default function ChangePasswordComponent() {
      }})
 
   }
-  function handleSubmit(event){
+  async function handleSubmit(event){
     event.preventDefault();
-    User.changePassword(password);
+    await User.changePassword(password,navigate);
   }
   return (
     <div>
