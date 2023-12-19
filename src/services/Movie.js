@@ -20,6 +20,15 @@ Movie.getAllMovies=async ()=>{
 
   }
 }
+Movie.getAllUpcomingMovies=async ()=>{
+  try{
+   const res=await axios.get(`${API}movies/upcoming`)
+   return res.data;
+   
+  }catch(err){
+
+  }
+}
 Movie.getMovieById=async (id)=>{
   try{
    const res=await axios.get(`${API}movies/${id}`)
