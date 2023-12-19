@@ -20,9 +20,9 @@ function HomeComponent() {
    
     return <>
         <HeaderComponent />
-      <center><h1 className="card-body">{">>>>>>"} Availabe Movies {"<<<<<<"}</h1> </center>
+      <center><h3 className="card-body">👻👻👻👻 Availabe Movies 👻👻👻👻</h3> </center>
         <MoviesComponent movies={movies}/>
-        <center><h1 className="card-body">{">>>>>>"} Upcoming Movies {"<<<<<<"}</h1> </center>
+      {upcoming && !!upcoming.length && <center><h3 className="card-body">💀💀💀💀 Upcoming Movies 💀💀💀💀</h3> </center>}
         <MoviesComponent movies={upcoming}/>
     </>
 }

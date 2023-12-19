@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {  Row } from 'react-bootstrap';
 
-import Movie from '../services/Movie';
+
 import MovieCardComponent from './MovieCardComponent';
 
 export default function MoviesComponent({movies}) {

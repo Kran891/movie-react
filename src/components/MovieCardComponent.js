@@ -18,10 +18,13 @@ function MovieCardComponent(props){
             <Card.Footer>
                 <Row>
                     <Col md={3}>
-                        <Link className="btn btn-link" to={`/moviedetail/${id}/${props.movie._id}`}>Details</Link>
+                        <Link className="btn btn-secondary" to={`/moviedetail/${id}/${props.movie._id}`}>Details</Link>
                     </Col>
-                    <Col md={9}>
-                        <Link className="btn btn-link" to={props.movie.ott.movieUrl} target="_blank">{props.movie.ott.ottId.name}</Link>
+                    <Col md={2}>
+
+                    </Col>
+                    <Col md={7}>
+                        <Link className="btn btn-success" to={props.movie.ott.movieUrl} target="_blank">{props.movie.ott.ottId.name}</Link>
                     </Col>
                 </Row>
             </Card.Footer>
