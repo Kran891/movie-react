@@ -17,9 +17,10 @@ export default function LogInComponent() {
      }})
 
   }
-  function handleSubmit(event){
+  async function handleSubmit(event){
     event.preventDefault();
-    User.loginUser(user);
+    await User.loginUser(user,navigate);
+    
   }
   return (
     <div>

@@ -14,6 +14,7 @@ function App() {
     <Routes>
       <Route path='/signup' Component={SignUpComponent}/>
       <Route exact path='/' Component={HomeComponent} />
+      <Route  path='/home' Component={HomeComponent} />
       <Route path='/signin' Component={LogInComponent}/>
       <Route path='/movies'  Component={MoviesComponent}/>
       <Route path='/moviedetail' Component={MovieDetailComponent} />
