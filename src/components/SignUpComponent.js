@@ -19,9 +19,9 @@ export default function SignUpComponent() {
      }})
 
   }
-  function handleSubmit(event){
+  async function handleSubmit(event){
     event.preventDefault();
-    User.addUser(user);
+    await User.addUser(user,navigate);
   }
   return (
     <div>

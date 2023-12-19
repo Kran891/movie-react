@@ -2,19 +2,39 @@ import axios from "axios"
 import API from "./API";
 
 var User={}
-User.addUser=async(data)=>{
+User.addUser=async(data,navigate)=>{
     axios.post(`${API}users`,data)
     .then(res=>{
+        if(res.status != 401){
+            localStorage.setItem("token",res.data.token);
+            localStorage.setItem("id",res.data.id);
+            navigate("/")
+        }
+        else{
+            navigate("/signin")
+        }
         console.log(res.data);
     })
 }
-User.loginUser = async (data) => {
+User.loginUser = async (data,navigate) => {
+   try {
     axios.post(`${API}users/login`,data)
     .then(res => {
-        localStorage.setItem("token",res.data.token);
-        localStorage.setItem("id",res.data.id);
+        if(res.status != 401){
+            localStorage.setItem("token",res.data.token);
+            localStorage.setItem("id",res.data.id);
+            navigate("/")
+        }
+        else{
+            navigate("/signin")
+        }
         console.log(res);
+    }).catch(err=>{
+
     })
+   } catch (error) {
+     
+   } 
 }
 User.changePassword = async (data) => {
     data.userId = localStorage.getItem('id');
