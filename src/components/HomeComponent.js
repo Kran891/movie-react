@@ -20,19 +20,29 @@ function HomeComponent() {
         };
     }, [0]);
     function handleChange(language, type) {
-
-        
-        debugger
-        if (language !== "Language" && type === "Type") {
-            setMovies([...moviesList.filter(x => x.languages.includes(language.toLowerCase()))])
+        if(language === "ALL LANGUAGES" && type === "ALL TYPES"){
+            setMovies(moviesList)
         }
-        else if (language === "Language" && type !== "Type") {
-            setMovies([...moviesList.filter(x => x.typeId.name == (type.toLowerCase()))])
+        else if(language !== "ALL LANGUAGES" && type !== "ALL TYPES"){
+            setMovies([...moviesList.filter(x => x.typeId.name == (type.toLowerCase()) && x.languages.includes(language.toLowerCase()))])
         }
-        else if(language === "Language" && type !== "Type"){
-            setMovies([...moviesList.filter(x => x.typeId.name == (language) && x.languages.includes(language))])
+        else if (type === "ALL TYPES") {
+            if(language !== "ALL LANGUAGES"){
+                setMovies([...moviesList.filter(x => x.languages.includes(language.toLowerCase()))])
+            }
+            else{
+                setMovies([...moviesList.filter(x => x.typeId.name == (type.toLowerCase()))])
+            }
         }
-
+        else if (language === "ALL LANGUAGES") {
+            if(type !== "ALL TYPES"){
+                setMovies([...moviesList.filter(x => x.typeId.name == (type.toLowerCase()))])
+            }
+            else{
+                setMovies([...moviesList.filter(x => x.languages.includes(language.toLowerCase()))])
+            }
+            
+        }
     }
     return <>
         <HeaderComponent handleChange={handleChange} />

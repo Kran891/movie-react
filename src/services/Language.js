@@ -5,6 +5,7 @@ var Language={}
 Language.getAllLanguages=async(setLanguages)=>{
     try{
        const res=await axios.get(`${API}languages`);
+       res.data.unshift("All Languages");
        setLanguages(res.data)
     }catch(err){
         console.log(err);

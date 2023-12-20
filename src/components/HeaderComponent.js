@@ -14,8 +14,8 @@ import ProfileDropDownComponent from './ProfileDropDownComponent';
 function HeaderComponent(props) {
 
   const [languages, setLanguages] = useState(null);
-    const [language,setLanguage]=useState("Language")
-  const [type, setType] = useState("Type")
+    const [language,setLanguage]=useState("ALL LANGUAGES")
+  const [type, setType] = useState("ALL TYPES")
 
   const [types, setTypes] = useState(null);
   const id = localStorage.getItem('id');
