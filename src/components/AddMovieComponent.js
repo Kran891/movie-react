@@ -6,6 +6,7 @@ import Genreral from '../services/General';
 import Movie from '../services/Movie';
 import ModalComponent from './ModalComponent';
 import Genre from '../services/Genre';
+import Language from '../services/Language';
 
 export default function AddMovieComponent() {
   const role = localStorage.getItem('role');
@@ -84,6 +85,11 @@ export default function AddMovieComponent() {
       console.log(genreData);
       await Genre.addGenre(genreData);
       await getGenres();
+    }
+    async function handleLanguageFormSubmit(languageData) {
+      console.log(languageData);
+      await Language.addLanguage(languageData);
+      await getLanguages();
     }
   return (
     <div>
@@ -181,7 +187,7 @@ export default function AddMovieComponent() {
                                 }}  />
                               </Col>
                               <Col>
-                              <ModalComponent onGenreFormSubmit={handleGenreFormSubmit} />
+                              <ModalComponent onGenreFormSubmit={handleGenreFormSubmit} buttonName = {"genre"} />
                               </Col>
                             </Row>
                           </Form.Group>
@@ -207,9 +213,7 @@ export default function AddMovieComponent() {
                                 }}  />
                               </Col>
                               <Col>
-                                <Button>
-                                  <i className="fa-solid fa-plus fa-beat fa-2xs"></i>
-                                </Button>
+                                <ModalComponent onLanguageFormSubmit={handleLanguageFormSubmit} buttonName = {"language"} />
                               </Col>
                             </Row>
                           </Form.Group>
