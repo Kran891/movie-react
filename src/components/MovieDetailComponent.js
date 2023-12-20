@@ -4,14 +4,20 @@ import { Link, useParams } from 'react-router-dom';
 import { images } from '../RandomImage';
 import Movie from '../services/Movie';
 import cardImage from '../img/covers/cover.jpg'
+import HeadingComponent from './HeadingComponent';
+import MovieCardComponent from './MovieCardComponent';
+import CarsouelComponent from './CarsouelComponent';
+
 
 export default function MovieDetailComponent() {
     const { id, mid } = useParams();
     const [movie, setmovie] = useState(null);
+    const [movies, setmovies] = useState(null);
     useEffect(() => {
 
         return async () => {
             setmovie(await Movie.getMovieById(mid))
+            setmovies(await Movie.getAllMovies())
         };
     }, []);
     return (
@@ -32,145 +38,12 @@ export default function MovieDetailComponent() {
                     <p>Watch it on : <Link className='btn btn-success' style={{ 'margin-left': '5px' }} to={movie.ott.movieUrl}>{movie.ott.ottId.name}</Link> </p>
                 </Col>}
             </Row>
-            <center className='card-body' style={{'margin-top':'20px','margin-bottom':'20px'}}><h3>--- Similar Movies ---</h3></center>
+            <HeadingComponent heading={`👻👻👻👻 Availabe Movies 👻👻👻👻`}/>
             <Row className='mt-4 mb-4'>
                 <Col>
-                    <Carousel>
-                        <Carousel.Item>
-                            <Row>
-                                <Col md={3}>
-                                    <div class="card" style={{ "width": "18rem" }}>
-                                        <p style={{ "display": "none" }}>5</p>
-                                        <img class="card-img-top imgSize" src={cardImage} />
-                                        <div class="card-body"><div class="card-title h5">Animal</div><p class="card-text">
-                                            <p class="movieCardTextStyling"><i class="fa-solid fa-clock"></i> : Fri Dec 01 2023</p>
-                                            <p class="movieCardTextStyling"><i class="fa-solid fa-globe"></i> : Action</p>
-                                        </p><div class="card-footer"><div class="row"><div class="col-md-3">
-                                            <a class="btn btn-link" href="/moviedetail/5/658040043c6006b5ba39144a">Details</a>
-                                        </div>
-                                            <div class="col-md-9">
-                                                <a class="btn btn-link" href="/home/netflix.com" target="_blank">Netflix</a>
-                                            </div>
-                                        </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </Col>
-                                <Col md={3}>
-                                    <div class="card" style={{ "width": "18rem" }}>
-                                        <p style={{ "display": "none" }}>5</p>
-                                        <img class="card-img-top imgSize" src={cardImage} />
-                                        <div class="card-body"><div class="card-title h5">Animal</div><p class="card-text">
-                                            <p class="movieCardTextStyling"><i class="fa-solid fa-clock"></i> : Fri Dec 01 2023</p>
-                                            <p class="movieCardTextStyling"><i class="fa-solid fa-globe"></i> : Action</p>
-                                        </p><div class="card-footer"><div class="row">
-                                        <div class="col-md-3">
-                                            <a class="btn btn-secondary" href="/moviedetail/5/658040043c6006b5ba39144a">Details</a>
-                                        </div>
-                                        <div class="col-md-2">
-                                            
-                                        </div>
-                                            <div class="col-md-7">
-                                                <a class="btn btn-success" href="/home/netflix.com" target="_blank">Netflix</a>
-                                            </div>
-                                        </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </Col>
-                                <Col md={3}>
-                                    <div class="card" style={{"width": "18rem"}}>
-                                        <p style={{"display": "none"}}>5</p>
-                                        <img class="card-img-top imgSize" src={cardImage}/>
-                                            <div class="card-body"><div class="card-title h5">Animal</div><p class="card-text">
-                                                <p class="movieCardTextStyling"><i class="fa-solid fa-clock"></i> : Fri Dec 01 2023</p>
-                                                <p class="movieCardTextStyling"><i class="fa-solid fa-globe"></i> : Action</p>
-                                            </p><div class="card-footer"><div class="row"><div class="col-md-3">
-                                                <a class="btn btn-link" href="/moviedetail/5/658040043c6006b5ba39144a">Details</a>
-                                            </div>
-                                                <div class="col-md-9">
-                                                    <a class="btn btn-link" href="/home/netflix.com" target="_blank">Netflix</a>
-                                                </div>
-                                            </div>
-                                                </div>
-                                            </div>
-                                    </div>
-
-                            </Col>
-                                <Col md={3}>
-                                    <div class="card" style={{"width": "18rem"}}>
-                                        <p style={{"display": "none"}}>5</p>
-                                        <img class="card-img-top imgSize" src={cardImage}/>
-                                            <div class="card-body"><div class="card-title h5">Animal</div><p class="card-text">
-                                                <p class="movieCardTextStyling"><i class="fa-solid fa-clock"></i> : Fri Dec 01 2023</p>
-                                                <p class="movieCardTextStyling"><i class="fa-solid fa-globe"></i> : Action</p>
-                                            </p><div class="card-footer"><div class="row"><div class="col-md-3">
-                                                <a class="btn btn-link" href="/moviedetail/5/658040043c6006b5ba39144a">Details</a>
-                                            </div>
-                                                <div class="col-md-9">
-                                                    <a class="btn btn-link" href="/home/netflix.com" target="_blank">Netflix</a>
-                                                </div>
-                                            </div>
-                                                </div>
-                                            </div>
-                                    </div>
-
-                            </Col>
-                            </Row>
-                        </Carousel.Item>
-
-                        <Carousel.Item>
-                            <Col md={3}>
-                                {/* Second Column in the First Row */}
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="holder.js/100px180" />
-                                    <Card.Body>
-                                        <Card.Title>Card Title 2</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the bulk of the card's content.
-                                        </Card.Text>
-                                        <Button variant="primary">Go somewhere</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Carousel.Item>
-
-                        <Carousel.Item>
-                            <Col md={3}>
-                                {/* Third Column in the First Row */}
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="holder.js/100px180" />
-                                    <Card.Body>
-                                        <Card.Title>Card Title 3</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the bulk of the card's content.
-                                        </Card.Text>
-                                        <Button variant="primary">Go somewhere</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Carousel.Item>
-
-                        <Carousel.Item>
-                            <Col md={3}>
-                                {/* Fourth Column in the First Row */}
-                                <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="holder.js/100px180" />
-                                    <Card.Body>
-                                        <Card.Title>Card Title 4</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the bulk of the card's content.
-                                        </Card.Text>
-                                        <Button variant="primary">Go somewhere</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Carousel.Item>
-                    </Carousel>
+                    {movies && <CarsouelComponent data={movies}/>}
                 </Col>
             </Row>
-        </div >
+        </div>
     );
 }
