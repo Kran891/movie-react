@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Movie from "../services/Movie";
 import HeaderComponent from "./HeaderComponent";
+import HeadingComponent from "./HeadingComponent";
 import MoviesComponent from "./MoviesComponent";
 
 function HomeComponent() {
@@ -12,6 +13,7 @@ function HomeComponent() {
     useEffect(() => {
 
         return async () => {
+
             data = await Movie.getAllMovies()
             setMovies(data)
             setMoviesList(data)
@@ -36,9 +38,9 @@ function HomeComponent() {
     }
     return <>
         <HeaderComponent handleChange={handleChange} />
-        <center><h3 className="card-body">👻👻👻👻 Availabe Movies 👻👻👻👻</h3> </center>
+        <HeadingComponent heading={`👻👻👻👻 Availabe Movies 👻👻👻👻`} />
         <MoviesComponent movies={movies} />
-        {upcoming && !!upcoming.length && <center><h3 className="card-body">💀💀💀💀 Upcoming Movies 💀💀💀💀</h3> </center>}
+        {upcoming && !!upcoming.length && <HeadingComponent heading={`💀💀💀💀 Upcoming Movies 💀💀💀💀`}/>}
         <MoviesComponent movies={upcoming} />
     </>
 }
