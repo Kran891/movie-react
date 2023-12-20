@@ -25,6 +25,13 @@ const ModalComponent = (props) => {
         props.onGenreFormSubmit(genre);
         handleClose();
     }
+    function handleLanguageSubmit(event) {
+        event.preventDefault();
+        
+        props.onLanguageFormSubmit(genre);
+        handleClose();
+    }
+    
 
     return (
         <>
@@ -34,7 +41,7 @@ const ModalComponent = (props) => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Genre</Modal.Title>
+                    <Modal.Title>{props.buttonName}</Modal.Title>
                 </Modal.Header>
                 
                     <Modal.Body>
@@ -47,9 +54,19 @@ const ModalComponent = (props) => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" type='button' onClick={handleGenreSubmit} >
-                            Save Changes
-                        </Button>
+                        {
+                            props.buttonName === 'genre' ? 
+                            (
+                                <Button variant="primary" type='button' onClick={handleGenreSubmit} >
+                                    Save Changes
+                                </Button>
+                            ) : 
+                            (
+                                <Button variant="primary" type='button' onClick={handleLanguageSubmit} >
+                                    Save Changes
+                                </Button>
+                            )
+                        }
                     </Modal.Footer>
              
             </Modal>

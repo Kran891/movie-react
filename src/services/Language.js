@@ -10,4 +10,11 @@ Language.getAllLanguages=async(setLanguages)=>{
         console.log(err);
     }
 }
+Language.addLanguage = async (setLanguage) => {
+    axios.post(`${API}languages/addlanguage`,setLanguage)
+    .then( res => {
+        console.log(res.data)
+     }
+    )
+}
 export default Language;
