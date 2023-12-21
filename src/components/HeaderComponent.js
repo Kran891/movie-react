@@ -16,11 +16,10 @@ function HeaderComponent(props) {
   const [languages, setLanguages] = useState(null);
     const [language,setLanguage]=useState("ALL LANGUAGES")
   const [type, setType] = useState("ALL TYPES")
-
+  const [search,setSearch]=useState("");
   const [types, setTypes] = useState(null);
   const id = localStorage.getItem('id');
-  console.log(id)
-  const navigate = useNavigate();
+  
   useEffect(() => {
 
     return async () => {
@@ -31,16 +30,28 @@ function HeaderComponent(props) {
   }, []);
   function changeLanguage(lang){
    setLanguage(lang)
+   setSearch("")
    props.handleChange(lang,type)
   }
   function changeType(tp){
     setType(tp)
+    setSearch("")
     props.handleChange(language,tp)
    }
+   function handleChange(event){
+    const {value}=event.target;
+     props.handleSearch(value.trim().toLowerCase())
+    setSearch(value)
+ }
+ function handleClick(event){
+  event.preventDefault()
+  setSearch("")
+  
+ }
   return (
     <Navbar expand="lg" className="bg-body-tertiary pl-5">
       <Container fluid>
-        <Navbar.Brand href="#">MovieBuzz</Navbar.Brand>
+        <Navbar.Brand href="/">MovieBuzz</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -59,8 +70,10 @@ function HeaderComponent(props) {
               placeholder="Search"
               className="me-2 searchbarStyling"
               aria-label="Search"
+              value={search}
+              onChange={handleChange}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" onClick={handleClick}>Search</Button>
           </Form>
           { id != null ?
             <ProfileDropDownComponent />

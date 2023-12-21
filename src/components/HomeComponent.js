@@ -9,6 +9,7 @@ function HomeComponent() {
     const [movies, setMovies] = useState(null);
     const [moviesList, setMoviesList] = useState(null);
     const [upcoming, setUpcoming] = useState(null);
+    const [searchs, setSerachs] = useState(null);
     var data;
     useEffect(() => {
 
@@ -17,6 +18,7 @@ function HomeComponent() {
             data = await Movie.getAllMovies()
             setMovies(data)
             setMoviesList(data)
+            setSerachs(data)
             data = await Movie.getAllUpcomingMovies()
             setUpcoming(data)
         };
@@ -45,10 +47,15 @@ function HomeComponent() {
             }
             
         }
+        setSerachs(movies)
+    }
+
+    function handleSearch(search){
+        setMovies([...searchs.filter(x=>x.name.startsWith(search) || x.typeId.name.startsWith(search) || x.languages.some(y=>y.startsWith(search) || x.genres.some(y=>y.startsWith(search))))])
     }
     return <>
-        <HeaderComponent handleChange={handleChange} />
-        <HeadingComponent heading={`👻👻👻👻 Availabe Movies 👻👻👻👻`} />
+        <HeaderComponent handleChange={handleChange} handleSearch={handleSearch} />
+        {movies && !!movies.length && <HeadingComponent heading={`👻👻👻👻 Availabe Movies 👻👻👻👻`} />}
         <MoviesComponent movies={movies} />
         {upcoming && !!upcoming.length && <HeadingComponent heading={`💀💀💀💀 Upcoming Movies 💀💀💀💀`}/>}
         <MoviesComponent movies={upcoming} />
