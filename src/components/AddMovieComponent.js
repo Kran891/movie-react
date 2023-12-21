@@ -84,12 +84,14 @@ export default function AddMovieComponent() {
     async function handleGenreFormSubmit(genreData) {
       console.log(genreData);
       await Genre.addGenre(genreData);
-      await getGenres();
+      const x = await getGenres();
+      setGenres(x);
     }
     async function handleLanguageFormSubmit(languageData) {
       console.log(languageData);
       await Language.addLanguage(languageData);
-      await getLanguages();
+      const y = await getLanguages();
+      setLanguages(y)
     }
   return (
     <div>
