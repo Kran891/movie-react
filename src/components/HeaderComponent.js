@@ -64,6 +64,7 @@ function HeaderComponent(props) {
             <NavDropdownComponent title={language}   changeTitle={changeLanguage} data={languages}/>
             <NavDropdownComponent title={type}  changeTitle={changeType}  data={types}/>
           </Nav>
+          
           <Form className="d-flex">
             <Form.Control
               type="search"
@@ -74,11 +75,15 @@ function HeaderComponent(props) {
               onChange={handleChange}
             />
             <Button variant="outline-success" onClick={handleClick}>Search</Button>
+            
           </Form>
+         
+          <Link className='btn btn-outline-primary' style={{marginLeft:"5px"}}><i class={`fa-solid  fa-heart fa-xl`} style={{color: "#f04267"}}></i>10</Link>
+          
           { id != null ?
             <ProfileDropDownComponent />
             :
-            (<Link className='btn btn-secondary' style={{'margin-left':'5px'}} to={"/signin"}>
+            (<Link className='btn btn-secondary' style={{marginLeft:'5px'}} to={"/signin"}>
                 SignIn
             </Link>)
           }

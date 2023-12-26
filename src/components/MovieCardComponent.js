@@ -6,13 +6,20 @@ import { getRandomIndex, images } from "../RandomImage";
 function MovieCardComponent(props){
     var id;
     const [clicked,setclicked]=useState(false)
+    const [flip,setflip]=useState(false)
     function onClick(){
-      setclicked(!clicked);
+      
+      setflip(true)
+      setTimeout(()=>{
+        setclicked(!clicked);
+        setflip(false)
+        
+      },500)
     }
  return <>
     <Col md={3} className="mb-4">
         <Card style={{ width: '18rem',position:'relative' }}>
-        <i class={`${clicked? 'fa-solid':'fa-regular'} fa-heart fa-beat fa-xl`} tooltip="wishlist" onClick={onClick} style={{color: "#f04267",position:'absolute',top:15,right:10}}></i>
+        <i class={`${clicked? 'fa-solid':'fa-regular'}  ${flip?'fa-flip': 'fa-beat'} fa-heart fa-xl`} tooltip="wishlist" onClick={onClick} style={{color: "#f04267",position:'absolute',top:15,right:10}}></i>
         <p style={{display:"none"}}>{id=getRandomIndex()}</p>
           <Card.Img variant="top" className='imgSize' src={images[getRandomIndex()]} />
           <Card.Body>
