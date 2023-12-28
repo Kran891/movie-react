@@ -41,7 +41,15 @@ Movie.getMovieById=async (id)=>{
 
   }
 }
-
+Movie.getAllMovieIds = async () => {
+  try{
+    const res=await axios.get(`${API}movies/movieids`)
+    return res.data;
+    
+   }catch(err){
+ 
+   }
+}
 Movie.addNewMovie=async(movie)=>{
  
   const formData=new FormData();

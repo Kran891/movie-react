@@ -9,11 +9,17 @@ wishList.addToUserWishList = async (data) => {
         res => {return res.data}
     )
 }
-wishList.getUserWishList = async (id,setMovies) => {
+wishList.removeFromUserWishList = async (data) => {
+    axios.post(`${API}wishlist/removefromwishlist`,data)
+    .then(
+        res => {return res.data}
+    )
+}
+wishList.getUserWishList = async (id,setWishLists) => {
     axios.get(`${API}movies/wishlist/${id}`)
     .then(
         res => {
-            setMovies(res.data);
+            setWishLists(res.data);
             return res.data;
         }
     )
@@ -27,4 +33,5 @@ wishList.getUserWishListById = async (id,setWishListCount) => {
         }
     )
 }
+
 export default wishList

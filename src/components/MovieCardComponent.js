@@ -8,42 +8,61 @@ import wishList from '../services/WishList';
 
 function MovieCardComponent(props){
     
-    const [clicked,setclicked]=useState(false)
+    const [clicked,setclicked]=useState(true)
     const [flip,setflip]=useState(false)
     const [imageURL,setImageURL]=useState(null)
+    const [wishLists,setWishLists]=useState(null)
     useEffect(() => {
       
-      return () => {
-      
-      const url = bufferToImage(props.movie.posterId)
-      setImageURL(url)
+      return async () => {
+        if(localStorage.getItem('id') != null){
+          await wishList.getUserWishList(localStorage.getItem('id'),setWishLists)
+        }
+        const url = bufferToImage(props.movie.posterId)
+        setImageURL(url)
       };
     }, []);
     
     async function onClick(){
+      let wishListMovieIds = []
+      wishLists.forEach(wishList => {
+        wishListMovieIds.push(wishList.movieId);
+      });
+      if(clicked && !wishListMovieIds.includes(props.movie._id)){
+        await addToWishList()
+        props.handleWishList(1);
+      }
+      else{
+        await removeFromWishList()
+        props.handleWishList(-1);
+      }
+      setflip(true)
+      setTimeout(()=>{
+        setclicked(!clicked);
+        setflip(false)
+       
+      },500)
+    }
+    async function addToWishList(){
       const data = {
         id : localStorage.getItem('id'),
         mid : props.movie._id
       }
       await wishList.addToUserWishList(data);
-      
-      setflip(true)
-      setTimeout(()=>{
-        setclicked(!clicked);
-        setflip(false)
-        if(clicked){
-          props.handleWishList(1);
-        }
-        else{
-          props.handleWishList(-1);
-        }
-      },500)
+    }
+    async function removeFromWishList(){
+      const data = {
+        id : localStorage.getItem('id'),
+        mid : props.movie._id
+      }
+      await wishList.removeFromUserWishList(data);
     }
  return <>
     <Col md={3} className="mb-4">
         <Card style={{ width: '18rem',position:'relative' }}>
-        <i class={`${clicked? 'fa-solid':'fa-regular'}  ${flip?'fa-flip': 'fa-beat'} fa-heart fa-xl`} tooltip="wishlist" onClick={onClick} style={{color: "#f04267",position:'absolute',top:15,right:10}}></i>
-       
+          {
+            localStorage.getItem('id') && <i class={`${clicked?'fa-regular':'fa-solid'}  ${flip?'fa-flip': 'fa-beat'} fa-heart fa-xl`} tooltip="wishlist" onClick={onClick} style={{color: "#f04267",position:'absolute',top:15,right:10}}></i>
+          }
           <Card.Img variant="top" className='imgSize' alt="Data" src={imageURL}/>
           <Card.Body>
             <Card.Title>{props.movie.name[0].toUpperCase()+props.movie.name.slice(1).toLowerCase()}</Card.Title>
