@@ -19,7 +19,7 @@ function App() {
       <Route path='/signin' Component={LogInComponent}/>
       <Route path='/movies'  Component={MoviesComponent}/>
       <Route path='/wishlist' Component={WishListComponent}/>
-      <Route path='/moviedetail/:id/:mid' Component={MovieDetailComponent} />
+      <Route path='/moviedetail/:mid' Component={MovieDetailComponent} />
       <Route path='/addmovie' Component={AddMovieComponent} />
       <Route path='/changepassword' Component={ChangePasswordComponent} />
       <Route path='/profile' Component={UserProfileComponent} />
