@@ -8,6 +8,7 @@ import MovieDetailComponent from './components/MovieDetailComponent';
 import AddMovieComponent from './components/AddMovieComponent';
 import ChangePasswordComponent from './components/ChangePasswordComponent';
 import UserProfileComponent from './components/UserProfileComponent';
+import WishListComponent from './components/WishListComponent';
 
 function App() {
   return <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
       <Route  path='/home' Component={HomeComponent} />
       <Route path='/signin' Component={LogInComponent}/>
       <Route path='/movies'  Component={MoviesComponent}/>
+      <Route path='/wishlist' Component={WishListComponent}/>
       <Route path='/moviedetail/:id/:mid' Component={MovieDetailComponent} />
       <Route path='/addmovie' Component={AddMovieComponent} />
       <Route path='/changepassword' Component={ChangePasswordComponent} />

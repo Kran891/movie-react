@@ -8,6 +8,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 import Language from '../services/Language';
 import Movie from '../services/Movie';
+import wishList from '../services/WishList';
 import NavDropdownComponent from './NavDropDownComponent';
 import ProfileDropDownComponent from './ProfileDropDownComponent';
 
@@ -19,7 +20,6 @@ function HeaderComponent(props) {
   const [search,setSearch]=useState("");
   const [types, setTypes] = useState(null);
   const id = localStorage.getItem('id');
-  
   useEffect(() => {
 
     return async () => {
@@ -78,10 +78,11 @@ function HeaderComponent(props) {
             
           </Form>
          
-          <Link className='btn btn-outline-primary' style={{marginLeft:"5px"}}><i class={`fa-solid  fa-heart fa-xl`} style={{color: "#f04267"}}></i>10</Link>
           
           { id != null ?
-            <ProfileDropDownComponent />
+          <>
+          <Link className='btn btn-outline-primary' to={'/wishlist'} style={{marginLeft:"5px"}}><i class={`fa-solid  fa-heart fa-xl`} style={{color: "#f04267"}}></i>{props.wishListCount}</Link>
+            <ProfileDropDownComponent /></>
             :
             (<Link className='btn btn-secondary' style={{marginLeft:'5px'}} to={"/signin"}>
                 SignIn

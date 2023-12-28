@@ -23,7 +23,7 @@ User.loginUser = async (data,navigate,setError) => {
         if(res.status !== 401){
             localStorage.setItem("token",res.data.token);
             localStorage.setItem("id",res.data.id);
-            localStorage.setItem("role",res.data.roles[0]);
+            localStorage.setItem("role",res.data.role);
             navigate("/")
         }
         else{

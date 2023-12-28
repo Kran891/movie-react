@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Movie from "../services/Movie";
+import wishList from "../services/WishList";
 import HeaderComponent from "./HeaderComponent";
 import HeadingComponent from "./HeadingComponent";
 import MoviesComponent from "./MoviesComponent";
@@ -10,7 +11,9 @@ function HomeComponent() {
     const [moviesList, setMoviesList] = useState(null);
     const [upcoming, setUpcoming] = useState(null);
     const [searchs, setSerachs] = useState(null);
+    const [wishListCount,setWishListCount] = useState(null);
     var data;
+    var id = localStorage.getItem('id');
     useEffect(() => {
 
         return async () => {
@@ -21,6 +24,9 @@ function HomeComponent() {
             setSerachs(data)
             data = await Movie.getAllUpcomingMovies()
             setUpcoming(data)
+            if (id!=null){
+                await wishList.getUserWishListById(id,setWishListCount);
+            }
         };
     }, [0]);
     function handleChange(language, type) {
@@ -53,10 +59,13 @@ function HomeComponent() {
     function handleSearch(search){
         setMovies([...searchs.filter(x=>x.name.startsWith(search) || x.typeId.name.startsWith(search) || x.languages.some(y=>y.startsWith(search) || x.genres.some(y=>y.startsWith(search))))])
     }
+    function handleWishList(c){
+        setWishListCount(wishListCount+c)
+    }
     return <>
-        <HeaderComponent handleChange={handleChange} handleSearch={handleSearch} />
+        <HeaderComponent handleChange={handleChange} handleSearch={handleSearch} wishListCount = {wishListCount}/>
         {movies && !!movies.length && <HeadingComponent heading={`👻👻👻👻 Availabe Movies 👻👻👻👻`} />}
-        <MoviesComponent movies={movies} />
+        <MoviesComponent movies={movies} handleWishList={handleWishList} />
         {upcoming && !!upcoming.length && <HeadingComponent heading={`💀💀💀💀 Upcoming Movies 💀💀💀💀`}/>}
         <MoviesComponent movies={upcoming} />
     </>
