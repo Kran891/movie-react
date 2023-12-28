@@ -1,4 +1,5 @@
 import axios from "axios"
+
 import API from "./API";
 
 var Movie={}
@@ -42,8 +43,19 @@ Movie.getMovieById=async (id)=>{
 }
 
 Movie.addNewMovie=async(movie)=>{
-  
-  axios.post(`${API}movies`,movie)
+ 
+  const formData=new FormData();
+  formData.append('genres',JSON.stringify(movie.genres))
+  formData.append('languages',JSON.stringify(movie.languages))
+  formData.append('ott',JSON.stringify(movie.ott))
+  formData.append('name',movie.name)
+  formData.append('rating',movie.rating)
+  formData.append('releaseDate',movie.releaseDate)
+  formData.append('description',movie.description)
+  formData.append('movieType',movie.movieType)
+  formData.append('moviePoster',movie.moviePoster)
+
+  axios.post(`${API}movies`,formData)
   .then(res=>{console.log(res.data)})
 }
 export default Movie;

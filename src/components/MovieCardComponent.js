@@ -1,12 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import bufferToImage from "../BufferToImage";
 import  coverImages from '../img/covers/cover.jpg'
 import { getRandomIndex, images } from "../RandomImage";
 function MovieCardComponent(props){
-    var id;
+    
     const [clicked,setclicked]=useState(false)
     const [flip,setflip]=useState(false)
+    const [imageURL,setImageURL]=useState(null)
+    useEffect(() => {
+      
+      return () => {
+      
+      const url = bufferToImage(props.movie.posterId)
+      setImageURL(url)
+      };
+    }, []);
+    
     function onClick(){
       
       setflip(true)
@@ -20,8 +31,8 @@ function MovieCardComponent(props){
     <Col md={3} className="mb-4">
         <Card style={{ width: '18rem',position:'relative' }}>
         <i class={`${clicked? 'fa-solid':'fa-regular'}  ${flip?'fa-flip': 'fa-beat'} fa-heart fa-xl`} tooltip="wishlist" onClick={onClick} style={{color: "#f04267",position:'absolute',top:15,right:10}}></i>
-        <p style={{display:"none"}}>{id=getRandomIndex()}</p>
-          <Card.Img variant="top" className='imgSize' src={images[getRandomIndex()]} />
+       
+          <Card.Img variant="top" className='imgSize' alt="Data" src={imageURL}/>
           <Card.Body>
             <Card.Title>{props.movie.name[0].toUpperCase()+props.movie.name.slice(1).toLowerCase()}</Card.Title>
             <Card.Text>
@@ -31,13 +42,13 @@ function MovieCardComponent(props){
             <Card.Footer>
                 <Row>
                     <Col md={3}>
-                        <Link className="btn btn-secondary" to={`/moviedetail/${id}/${props.movie._id}`}>Details</Link>
+                        <Link className="btn btn-secondary" to={`/moviedetail/${props.movie._id}`}>Details</Link>
                     </Col>
                     <Col md={2}>
 
                     </Col>
                     <Col md={7}>
-                        <Link className="btn btn-success" to={props.movie.ott.movieUrl} target="_blank">{props.movie.ott.ottId.name}</Link>
+                        <Link className="btn btn-success" to={`https://${props.movie.ott.movieUrl}`} target="_blank">{props.movie.ott.ottId.name}</Link>
                     </Col>
                 </Row>
             </Card.Footer>
